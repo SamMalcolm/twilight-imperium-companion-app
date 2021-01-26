@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'push_notifications.dart';
 
 void main() {
   runApp(MyApp());
@@ -6,6 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,6 +53,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  PushNotificationsManager pnm = new PushNotificationsManager();
 
   void _incrementCounter() {
     setState(() {
@@ -65,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    pnm.init();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
