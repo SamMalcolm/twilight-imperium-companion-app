@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        brightness: Brightness.dark,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -53,34 +54,59 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  PushNotificationsManager pnm = new PushNotificationsManager();
+Widget factionItem(faction, context) {
+  return Container(
+    decoration: BoxDecoration(
+        image: DecorationImage(
+      image: AssetImage(faction['image']),
+      colorFilter: new ColorFilter.mode(
+          Colors.black.withOpacity(0.4), BlendMode.dstATop),
+      fit: BoxFit.cover,
+    )),
+    child: Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: ListTile(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FactionView(faction: faction)));
+        },
+        title: Text(faction['name'].toUpperCase(),
+            style: TextStyle(fontFamily: 'Handel', color: Colors.white)),
+        leading: Image.asset(faction['icon']),
+        subtitle: Text(faction['body-text'].substring(0, 100),
+            style: TextStyle(color: Colors.white)),
+        isThreeLine: true,
+      ),
+    ),
+  );
+}
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+List<Widget> factionOptions(context) {
+  List<Widget> output = [];
+  for (var i = 0; i < factions.length; i++) {
+    output.add(factionItem(factions[i], context));
   }
+  return output;
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  PushNotificationsManager pnm = new PushNotificationsManager();
 
   @override
   Widget build(BuildContext context) {
     pnm.init();
-    print(factions[1]['name']);
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
-        //body: Text("test")
-        body: factionPage(factions[0]['name'], factions[0]['icon'],
-            factions[0]['image'], factions[0]['body-text']));
+        appBar: AppBar(
+          title: Text("TWILIGHT IMPERIUM",
+              style: TextStyle(
+                  color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
+          backgroundColor: Colors.blueGrey[900],
+        ),
+        body: ListView(
+          children: factionOptions(context),
+        ));
   }
 }

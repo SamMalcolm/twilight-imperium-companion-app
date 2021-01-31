@@ -44,6 +44,10 @@ flutter:
         fonts:
           - asset: assets/fonts/handel.otf
             style: italic
+      - family: Ambroise
+        fonts:
+          - asset: assets/fonts/ambroise.otf
+            style: italic
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
