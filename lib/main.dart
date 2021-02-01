@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text("TWILIGHT IMPERIUM",
               style: TextStyle(
                   color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
-          backgroundColor: Colors.blueGrey[900],
+          backgroundColor: Colors.black54,
         ),
         body: ListView(children: [
           Card(

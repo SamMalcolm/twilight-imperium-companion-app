@@ -16,7 +16,7 @@ class _StrategyCardViewState extends State<StrategyCardView> {
           title: Text("STRATEGY CARDS",
               style: TextStyle(
                   color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
-          backgroundColor: Colors.blueGrey[900],
+          backgroundColor: Colors.black54,
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -37,7 +37,10 @@ class _StrategyCardViewState extends State<StrategyCardView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(widget.strategy['name'],
+                  Text(
+                      widget.strategy['initiative'].toString() +
+                          " | " +
+                          widget.strategy['name'],
                       style: TextStyle(
                           fontSize: 32,
                           fontFamily: 'Handel',

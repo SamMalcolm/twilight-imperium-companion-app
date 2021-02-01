@@ -54,7 +54,7 @@ class _FactionMenuState extends State<FactionMenuView> {
           title: Text("FACTIONS",
               style: TextStyle(
                   color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
-          backgroundColor: Colors.blueGrey[900],
+          backgroundColor: Colors.black54,
         ),
         body: ListView(
           children: factionOptions(context),

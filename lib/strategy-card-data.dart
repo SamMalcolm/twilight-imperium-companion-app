@@ -44,7 +44,7 @@ List<Map> strategyCards = [
         "Spend 1 token from your strategy pool to replenish commodities."
   },
   {
-    "name": "Warefare",
+    "name": "Warfare",
     "color": [40, 100, 200],
     "initiative": 6,
     "primary":

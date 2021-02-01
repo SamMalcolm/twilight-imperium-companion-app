@@ -55,7 +55,7 @@ class _StrategyMenuViewState extends State<StrategyMenuView> {
           title: Text("STRATEGY CARDS",
               style: TextStyle(
                   color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
-          backgroundColor: Colors.blueGrey[900],
+          backgroundColor: Colors.black54,
         ),
         body: ListView(
           children: strategyOptions(context),
