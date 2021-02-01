@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:twilight_imperium_companion/strategy-card-list.dart';
 import 'push_notifications.dart';
-import 'faction-main.dart';
-import 'faction-data.dart';
+import 'faction-menu.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'strategy-card-list.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,41 +56,12 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-Widget factionItem(faction, context) {
-  return Container(
-    decoration: BoxDecoration(
-        image: DecorationImage(
-      image: AssetImage(faction['image']),
-      colorFilter: new ColorFilter.mode(
-          Colors.black.withOpacity(0.4), BlendMode.dstATop),
-      fit: BoxFit.cover,
-    )),
-    child: Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: ListTile(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => FactionView(faction: faction)));
-        },
-        title: Text(faction['name'].toUpperCase(),
-            style: TextStyle(fontFamily: 'Handel', color: Colors.white)),
-        leading: Image.asset(faction['icon']),
-        subtitle: Text(faction['body-text'].substring(0, 100),
-            style: TextStyle(color: Colors.white)),
-        isThreeLine: true,
-      ),
-    ),
-  );
-}
-
-List<Widget> factionOptions(context) {
-  List<Widget> output = [];
-  for (var i = 0; i < factions.length; i++) {
-    output.add(factionItem(factions[i], context));
+_launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
-  return output;
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -105,8 +78,60 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
           backgroundColor: Colors.blueGrey[900],
         ),
-        body: ListView(
-          children: factionOptions(context),
-        ));
+        body: ListView(children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StrategyMenuView()));
+                  },
+                  title: Text('STRATEGY CARDS',
+                      style: TextStyle(fontFamily: 'Handel')),
+                  subtitle: Text(
+                      'A Player reference for the Strategy cards drafted in the Strategy phase during game play.')),
+            ),
+          ),
+          Card(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FactionMenuView()));
+                },
+                title: Text('FACTIONS', style: TextStyle(fontFamily: 'Handel')),
+                subtitle: Text(
+                    'A refrence for all of the 24 Factions available in Twilight Imperium and the Prophecy of Kings expansion')),
+          )),
+          Card(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title:
+                  Text('ROUND ORDER', style: TextStyle(fontFamily: 'Handel')),
+              subtitle: Text(
+                  'A Guide for the sequence of steps taking in phases and rounds of gameplay '),
+            ),
+          )),
+          Card(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              onTap: () {
+                _launchURL("https://www.youtube.com/watch?v=_u2xEap5hBM");
+              },
+              title:
+                  Text('HOW TO PLAY', style: TextStyle(fontFamily: 'Handel')),
+              subtitle: Text(
+                  'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
+            ),
+          ))
+        ]));
   }
 }
