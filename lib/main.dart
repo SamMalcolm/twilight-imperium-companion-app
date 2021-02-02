@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:twilight_imperium_companion/strategy-card-list.dart';
-import 'push_notifications.dart';
 import 'faction-menu.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'strategy-card-list.dart';
+import 'push_notifications.dart';
+import 'pn_test.dart';
 
 void main() {
   runApp(MyApp());
@@ -65,12 +66,11 @@ _launchURL(String url) async {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PushNotificationsManager pnm = new PushNotificationsManager();
+  // PushNotificationsManager pnm = new PushNotificationsManager();
 
   @override
   Widget build(BuildContext context) {
-    pnm.init();
-
+    // pnm.init();
     return Scaffold(
         appBar: AppBar(
           title: Text("TWILIGHT IMPERIUM",
@@ -128,6 +128,19 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               title:
                   Text('HOW TO PLAY', style: TextStyle(fontFamily: 'Handel')),
+              subtitle: Text(
+                  'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
+            ),
+          )),
+          Card(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => PnView()));
+              },
+              title: Text('Token', style: TextStyle(fontFamily: 'Handel')),
               subtitle: Text(
                   'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
             ),
