@@ -45,3 +45,6 @@ ios/GoogleService-Info.plist
 android/app/google-services.json
 
 assets/
+
+lib/rules_extractor/*.pdf
+lib/rules_extractor/node_modules
