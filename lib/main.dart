@@ -3,8 +3,7 @@ import 'package:twilight_imperium_companion/strategy-card-list.dart';
 import 'faction-menu.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'strategy-card-list.dart';
-import 'push_notifications.dart';
-import 'pn_test.dart';
+import 'rulese-rerference.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,79 +71,79 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // pnm.init();
     return Scaffold(
-        appBar: AppBar(
-          title: Text("TWILIGHT IMPERIUM",
-              style: TextStyle(
-                  color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
-          backgroundColor: Colors.black54,
-        ),
-        body: ListView(children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => StrategyMenuView()));
-                  },
-                  title: Text('STRATEGY CARDS',
-                      style: TextStyle(fontFamily: 'Handel')),
-                  subtitle: Text(
-                      'A Player reference for the Strategy cards drafted in the Strategy phase during game play.')),
-            ),
-          ),
-          Card(
-              child: Padding(
+      appBar: AppBar(
+        title: Text("TWILIGHT IMPERIUM",
+            style: TextStyle(
+                color: Colors.orange, fontFamily: 'Ambroise', fontSize: 24)),
+        backgroundColor: Colors.black54,
+      ),
+      body: ListView(children: [
+        Card(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => FactionMenuView()));
+                          builder: (context) => StrategyMenuView()));
                 },
-                title: Text('FACTIONS', style: TextStyle(fontFamily: 'Handel')),
+                title: Text('STRATEGY CARDS',
+                    style: TextStyle(fontFamily: 'Handel')),
                 subtitle: Text(
-                    'A refrence for all of the 24 Factions available in Twilight Imperium and the Prophecy of Kings expansion')),
-          )),
-          Card(
-              child: Padding(
+                    'A Player reference for the Strategy cards drafted in the Strategy phase during game play.')),
+          ),
+        ),
+        Card(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title:
-                  Text('ROUND ORDER', style: TextStyle(fontFamily: 'Handel')),
-              subtitle: Text(
-                  'A Guide for the sequence of steps taking in phases and rounds of gameplay '),
-            ),
-          )),
-          Card(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RulesReferenceView()));
+                },
+                title: Text('RULES REFERENCE',
+                    style: TextStyle(fontFamily: 'Handel')),
+                subtitle: Text(
+                    'A searchable digital version of the living rules reference.')),
+          ),
+        ),
+        Card(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
               onTap: () {
-                _launchURL("https://www.youtube.com/watch?v=_u2xEap5hBM");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FactionMenuView()));
               },
-              title:
-                  Text('HOW TO PLAY', style: TextStyle(fontFamily: 'Handel')),
+              title: Text('FACTIONS', style: TextStyle(fontFamily: 'Handel')),
               subtitle: Text(
-                  'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
-            ),
-          )),
-          Card(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => PnView()));
-              },
-              title: Text('Token', style: TextStyle(fontFamily: 'Handel')),
-              subtitle: Text(
-                  'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
-            ),
-          ))
-        ]));
+                  'A refrence for all of the 24 Factions available in Twilight Imperium and the Prophecy of Kings expansion')),
+        )),
+        Card(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: Text('ROUND ORDER', style: TextStyle(fontFamily: 'Handel')),
+            subtitle: Text(
+                'A Guide for the sequence of steps taking in phases and rounds of gameplay '),
+          ),
+        )),
+        Card(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            onTap: () {
+              _launchURL("https://www.youtube.com/watch?v=_u2xEap5hBM");
+            },
+            title: Text('HOW TO PLAY', style: TextStyle(fontFamily: 'Handel')),
+            subtitle: Text(
+                'Links to a YouTube video explaining the rules of Twilight Imperium 4th Edition'),
+          ),
+        ))
+      ]),
+    );
   }
 }
