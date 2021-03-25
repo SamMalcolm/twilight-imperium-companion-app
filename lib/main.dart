@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twilight_imperium_companion/strategy-card-list.dart';
 import 'faction-menu.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import 'strategy-card-list.dart';
 import 'rulese-rerference.dart';
 
@@ -57,13 +57,13 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-_launchURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// _launchURL(String url) async {
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }
 
 class _MyHomePageState extends State<MyHomePage> {
   // PushNotificationsManager pnm = new PushNotificationsManager();
@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
             onTap: () {
-              _launchURL("https://www.youtube.com/watch?v=_u2xEap5hBM");
+              // _launchURL("https://www.youtube.com/watch?v=_u2xEap5hBM");
             },
             title: Text('HOW TO PLAY', style: TextStyle(fontFamily: 'Handel')),
             subtitle: Text(
