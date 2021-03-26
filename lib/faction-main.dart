@@ -26,6 +26,7 @@ class _FactionViewState extends State<FactionView> {
   }
 
   Widget factionPage(faction, context) {
+    final PageController controller = PageController(initialPage: 0);
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
@@ -46,37 +47,82 @@ class _FactionViewState extends State<FactionView> {
           ],
         ),
       )),
-      Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(
-              height: 70,
-              width: 70,
-              child: Image.asset(faction['icon']),
-            ),
-            Text(
-              faction['name'].toUpperCase(),
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Handel', fontSize: 32),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(faction['body-text'],
-                  style:
-                      TextStyle(color: Colors.white, fontFamily: 'Sans-Serif')),
-            ),
-            MaterialButton(
-              child: Text('Back'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
-        ),
-      )
+      PageView(
+        controller: controller,
+        children: [pageOne(faction, context), pageTwo()],
+      ),
     ]);
   }
+}
+
+Widget pageTwo() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(height: 40.0),
+        Container(
+          decoration: BoxDecoration(
+              border: Border.all(width: 2.0, color: Colors.white),
+              color: Colors.black38),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  child: Text("Nestphar".toUpperCase(),
+                      style: TextStyle(fontFamily: 'Handel', fontSize: 24.00)),
+                ),
+                Text("This is my text")
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget pageOne(faction, context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        SizedBox(
+          height: 10.0,
+        ),
+        MaterialButton(
+          child: Text('Back'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        Expanded(child: SizedBox()),
+        SizedBox(
+          height: 70,
+          width: 70,
+          child: Image.asset(faction['icon']),
+        ),
+        Text(
+          faction['name'].toUpperCase(),
+          style: TextStyle(
+              color: Colors.white, fontFamily: 'Handel', fontSize: 32),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(faction['body-text'],
+              style: TextStyle(color: Colors.white, fontFamily: 'Sans-Serif')),
+        ),
+        SizedBox(
+          height: 15.0,
+        ),
+      ],
+    ),
+  );
 }
