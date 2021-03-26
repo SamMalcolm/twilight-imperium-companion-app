@@ -256,7 +256,7 @@ List<Map> rules = [
     ]
   },
   {
-    "title": "COMMAND SHEETFLEETTACTICTRADE GOODSSTRATEGYTYPES OF ACTIONS",
+    "title": "COMMAND SHEET",
     "number": "19",
     "sub_text": [
       "Each player has a command sheet that contains a strategy pool, a tactic pool, a fleet pool, a trade good area, and a quick reference.",
@@ -822,7 +822,7 @@ List<Map> rules = [
     ]
   },
   {
-    "title": "PLANETST",
+    "title": "PLANETS",
     "number": "64",
     "sub_text": [
       "Planets provide players with resources and influence. Planets are on system tiles and each has a name, a resource value, and an influence value. Some planets also have traits.",
