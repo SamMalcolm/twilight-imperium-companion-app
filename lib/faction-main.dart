@@ -66,6 +66,7 @@ Widget pageTwo() {
         Container(
           decoration: BoxDecoration(
               border: Border.all(width: 2.0, color: Colors.white),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Colors.black38),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -77,7 +78,7 @@ Widget pageTwo() {
                   child: Text("Nestphar".toUpperCase(),
                       style: TextStyle(fontFamily: 'Handel', fontSize: 24.00)),
                 ),
-                Text("This is my text")
+                Text("Resources: 3\nInfluence: 2")
               ],
             ),
           ),
